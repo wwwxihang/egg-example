@@ -1,5 +1,7 @@
 module.exports = {
     formatUser(user) {
-        return only(user, ['name', 'phone']);
+        return {
+            name: user
+        };
     }
 };
