@@ -10,7 +10,6 @@ module.exports = options => {
         if (!body) return;
 
         // 支持 options.threshold
-        console.log(options)
         if (options.threshold && ctx.length < options.threshold) return;
 
         if (isJSON(body)) body = JSON.stringify(body);

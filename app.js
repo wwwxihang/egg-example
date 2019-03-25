@@ -18,7 +18,7 @@ class AppBootHook {
     configDidLoad() {
         // Config, plugin files have been loaded.
     }
-
+    
     async didLoad() {
         // 所有的配置已经加载完毕
         // 可以用来加载应用自定义的文件，启动自定义的服务
@@ -36,7 +36,7 @@ class AppBootHook {
     async willReady() {
         // 所有的插件都已启动完毕，但是应用整体还未 ready
         // 可以做一些数据初始化等操作，这些操作成功才会启动应用
-
+        await this.app.runSchedule('update_cache');
         // 例如：从数据库加载数据到内存缓存
         // this.app.cacheData = await app.model.query(QUERY_CACHE_SQL);
     }

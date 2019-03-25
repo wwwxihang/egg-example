@@ -13,9 +13,9 @@ module.exports = app => {
 	router.get('/user/fetch/:id', controller.user.fetch);
 	router.get('/user', 'user.index');
 	router.get('/search', controller.search.index);
+	router.get('/user/:id', controller.user.info);
 
-
-	router.post('createPost', '/api/posts', controller.post.create);
+	router.post('createPost', '/create', controller.post.create);
 	router.get('/listPostsGet', controller.post.listPostsGet);
 	router.post('/listPostsPost', controller.post.listPostsPost);
 };

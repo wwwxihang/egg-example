@@ -9,8 +9,15 @@ class PostController extends Controller {
             title: { type: 'string' },
             content: { type: 'string' },
         };
+
         // 校验参数
-        ctx.validate(createRule);
+        try {
+            ctx.validate(createRule);
+        } catch (err) {
+            ctx.logger.warn(err.errors);
+            ctx.body = { success: false };
+            return;
+        }
         // 组装参数
         const author = ctx.session.userId;
         const req = Object.assign(ctx.request.body, { author });
@@ -53,6 +60,15 @@ class PostController extends Controller {
     }
     async listPostsPost() {
         this.ctx.body = this.ctx.request.body
+        
+        const ctx = this.ctx;
+        // try {
+        //     ctx.validate(createRule);
+        // } catch (err) {
+        //     ctx.logger.warn(err.errors);
+        //     ctx.body = { success: false };
+        //     return;
+        // }
         // assert.equal(this.ctx.request.body.title, 'controller');
         // assert.equal(this.ctx.request.body.content, 'what is controller');
     }
