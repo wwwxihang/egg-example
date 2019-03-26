@@ -28,6 +28,15 @@ module.exports = appInfo => {
         threshold: 1024, // 小于 1k 的响应体不压缩
     }
 
+    // 启动配置项
+    config.cluster = {
+        listen: {
+            port: 7002,
+            hostname: '127.0.0.1',
+            // path: '/var/run/egg.sock',
+        }
+    }
+
     // mysql
     config.mysql = {
         // database configuration
@@ -45,6 +54,14 @@ module.exports = appInfo => {
     }
 
     // 日志
+    config.logger = {
+        // 关闭所有打印到文件的日志：
+        // level: 'NONE',
+        // 默认编码为 utf-8，可通过如下方式覆盖：
+        // encoding: 'gbk',
+        outputJSON: true,
+        consoleLevel: 'DEBUG',
+    }
     config.customLogger = {
         // 定时任务日志
         scheduleLogger: {

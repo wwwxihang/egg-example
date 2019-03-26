@@ -15,6 +15,7 @@ class UpdateCache extends Subscription {
             dataType: 'json',
         });
 
+        // this.ctx.logger.info([`定时任务触发-${+new Date()}：`, res.data])
         console.log([`定时任务触发-${+new Date()}：`, res.data])
         this.ctx.app.cache = res.data;
     }
