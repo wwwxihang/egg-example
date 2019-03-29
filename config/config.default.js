@@ -38,20 +38,20 @@ module.exports = appInfo => {
     }
 
     // mysql
-    config.mysql = {
-        // database configuration
-        client: {
-            host: 'localhost',
-            port: '3306',
-            user: 'root',
-            password: 'wxh12345!',
-            database: 'wwwxh',
-        },
-        // load into app, default true
-        app: true,
-        // load into agent, default false
-        agent: false,
-    }
+    // config.mysql = {
+    //     // database configuration
+    //     client: {
+    //         host: 'localhost',
+    //         port: '3306',
+    //         user: 'root',
+    //         password: 'wxh12345!',
+    //         database: 'wwwxh',
+    //     },
+    //     // load into app, default true
+    //     app: true,
+    //     // load into agent, default false
+    //     agent: false,
+    // }
 
     // 日志
     config.logger = {
