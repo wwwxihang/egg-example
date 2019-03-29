@@ -24,8 +24,21 @@ class AppBootHook {
     // 配置文件加载完成
     configDidLoad() {
         // Config, plugin files have been loaded.
+        this.app.httpclient.on('request', req => {
+            console.log(req.url)
+            // req.url //请求 url
+            // req.ctx //是发起这次请求的当前上下文
+
+            // 可以在这里设置一些 trace headers，方便全链路跟踪
+        });
+        this.app.httpclient.on('response', result => {
+            console.log(result.res.status)
+            // result.res.status
+            // result.ctx //是发起这次请求的当前上下文
+            // result.req //对应的 req 对象，即 request 事件里面那个 req
+        });
     }
-    
+
     // 文件加载完成
     async didLoad() {
         // 所有的配置已经加载完毕
@@ -45,7 +58,10 @@ class AppBootHook {
     async willReady() {
         // 所有的插件都已启动完毕，但是应用整体还未 ready
         // 可以做一些数据初始化等操作，这些操作成功才会启动应用
-        await this.app.runSchedule('update_cache');
+
+        // 启动定时任务
+        // await this.app.runSchedule('update_cache');
+
         // 例如：从数据库加载数据到内存缓存
         // this.app.cacheData = await app.model.query(QUERY_CACHE_SQL);
     }
