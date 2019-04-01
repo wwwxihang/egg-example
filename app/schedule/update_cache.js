@@ -11,13 +11,15 @@ class UpdateCache extends Subscription {
 
     // subscribe 是真正定时任务执行时被运行的函数
     async subscribe() {
-        const res = await this.ctx.curl('https://hapi-pre.00bang.cn/column/getColumnByPosition?position=0', {
-            dataType: 'json',
-        });
+        // const res = await this.ctx.curl('https://hapi-pre.00bang.cn/column/getColumnByPosition?position=0', {
+        //     dataType: 'json',
+        // });
 
         // this.ctx.logger.info([`定时任务触发-${+new Date()}：`, res.data])
-        console.log([`定时任务触发-${+new Date()}：`, res.data])
-        this.ctx.app.cache = res.data;
+
+        let timeStr = new Date();
+        console.log([`定时任务触发-${+timeStr}`])
+        this.ctx.app.cache = +timeStr;
     }
 }
 

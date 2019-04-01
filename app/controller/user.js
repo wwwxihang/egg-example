@@ -2,20 +2,42 @@
 
 const Controller = require('egg').Controller;
 
+// 检查参数
+
 class UserController extends Controller {
-    async index() {
-        // this.ctx.body = this.app.cache.get(this.ctx.query.id);
-        this.ctx.logger.info(this.ctx.app.myName)
-        this.ctx.body = this.ctx.helper.formatUser(this.ctx.app.myName);
-    }
-    async fetch() {
-        this.ctx.response.body = this.ctx.params;
+    async list() {
+        const { ctx } = this;
+        const pageSize = ctx.query.pageSize;
+        const result = await ctx.service.user.list({
+            pageSize
+        });
+        ctx.body = result;
     }
     async info() {
         const { ctx } = this;
         const userId = ctx.params.id;
-        const userInfo = await ctx.service.user.find(userId);
-        ctx.body = userInfo;
+        const result = await ctx.service.user.info(userId);
+        ctx.body = result;
+    }
+    async add() {
+        const { ctx } = this;
+        const userName = ctx.query.userName;
+        // ctx.validate(createRule);
+        const result = await ctx.service.user.add({
+            userName
+        });
+        ctx.body = result;
+    }
+    async update() {
+        const { ctx } = this;
+        const userName = ctx.query.userName;
+        const userId = ctx.query.userId;
+        // ctx.validate(createRule);
+        const result = await ctx.service.user.update({
+            userName,
+            userId
+        });
+        ctx.body = result;
     }
 }
 

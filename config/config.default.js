@@ -31,27 +31,27 @@ module.exports = appInfo => {
     // 启动配置项
     config.cluster = {
         listen: {
-            // port: 7002,
-            // hostname: '127.0.0.1',
+            port: 7001,
+            hostname: '127.0.0.1',
             // path: '/var/run/egg.sock',
         }
     }
 
     // mysql
-    // config.mysql = {
-    //     // database configuration
-    //     client: {
-    //         host: 'localhost',
-    //         port: '3306',
-    //         user: 'root',
-    //         password: 'wxh12345!',
-    //         database: 'wwwxh',
-    //     },
-    //     // load into app, default true
-    //     app: true,
-    //     // load into agent, default false
-    //     agent: false,
-    // }
+    config.mysql = {
+        // database configuration
+        client: {
+            host: 'localhost',
+            port: '3306',
+            user: 'root',
+            password: 'wxh12345!',
+            database: 'wwwxh',
+        },
+        // load into app, default true
+        app: true,
+        // load into agent, default false
+        agent: false,
+    }
 
     // 日志
     config.logger = {
