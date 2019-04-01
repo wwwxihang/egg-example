@@ -18,6 +18,7 @@ module.exports = app => {
 	//user
 	router.get('/user/list', 'user.list');
 	router.get('/user/info/:id', 'user.info');
-	router.get('/user/add', 'user.add');
-	router.get('/user/update', 'user.update');
+	router.post('/user/add', 'user.add');
+	router.post('/user/del', 'user.del');
+	router.post('/user/update', 'user.update');
 };

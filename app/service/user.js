@@ -25,6 +25,17 @@ class UserService extends Service {
 
         return result;
     }
+    // 删除
+    async del(obj = {}) {
+        let result = false
+        if (obj.userId) {
+            result = await this.app.mysql.delete('user', {
+                user_id: obj.userId
+            });
+        }
+
+        return result;
+    }
     // 列表
     async list(obj = {}) {
         const result = await this.app.mysql.select('user', {

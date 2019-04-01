@@ -21,17 +21,32 @@ class UserController extends Controller {
     }
     async add() {
         const { ctx } = this;
-        const userName = ctx.query.userName;
+        
+        const body = Object.assign(ctx.request.body);
+
         // ctx.validate(createRule);
         const result = await ctx.service.user.add({
-            userName
+            userName: body.userName
+        });
+        ctx.body = result;
+    }
+    async del() {
+        const { ctx } = this;
+        
+        const body = Object.assign(ctx.request.body);
+
+        // ctx.validate(createRule);
+        const result = await ctx.service.user.del({
+            userId: body.userId
         });
         ctx.body = result;
     }
     async update() {
         const { ctx } = this;
-        const userName = ctx.query.userName;
-        const userId = ctx.query.userId;
+        const body = Object.assign(ctx.request.body);
+
+        const userName = body.userName;
+        const userId = body.userId;
         // ctx.validate(createRule);
         const result = await ctx.service.user.update({
             userName,
