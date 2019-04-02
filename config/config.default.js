@@ -41,11 +41,11 @@ module.exports = appInfo => {
     config.mysql = {
         // database configuration
         client: {
-            host: 'localhost',
+            host: '47.93.97.61',
             port: '3306',
             user: 'root',
-            password: 'wxh12345!',
-            database: 'wwwxh',
+            password: 'root',
+            database: 'egg',
         },
         // load into app, default true
         app: true,
