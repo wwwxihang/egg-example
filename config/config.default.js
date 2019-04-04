@@ -45,7 +45,7 @@ module.exports = appInfo => {
             port: '3306',
             user: 'root',
             password: 'root',
-            database: 'egg',
+            database: 'egg_dev',
         },
         // load into app, default true
         app: true,
